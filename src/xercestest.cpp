@@ -63,8 +63,19 @@ int main() {
 		cout << root->getNodeType() << endl;
 		cout << XMLString::transcode(root->getLocalName()) << endl;
 		cout << root->getPrefix() << endl;
-		cout << (XMLString::transcode(root->getPrefix()) == NULL ? "null" : "not null") << endl;
-//		cout << XMLString::transcode(root->getPrefix()) << endl;
+		string prefix;
+		if (root->getPrefix() != 0)
+		{
+			char* temp = XMLString::transcode(root->getPrefix());
+			prefix = temp;
+			XMLString::release(&temp);
+		}
+		cout << prefix << endl;
+		cout << "========" << endl;
+		cout << XMLString::transcode(root->getNamespaceURI()) << endl;
+		 DOMNodeList* list = doc->getElementsByTagNameNS(root->getNamespaceURI(), XMLString::transcode("Name"));
+		 cout << XMLString::transcode(list->item(0)->getNodeName()) << endl;
+
 	} catch (const XMLException& toCatch) {
 		char* message = XMLString::transcode(toCatch.getMessage());
 		cout << "Exception message is: \n" << message << "\n";
