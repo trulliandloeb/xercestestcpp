@@ -58,6 +58,8 @@ int main() {
 		cout << doc->getDoctype() << endl;
 		cout << XMLString::transcode(doc->getXmlEncoding()) << endl;
 		cout << doc->getNodeType() << endl;
+//		cout << XMLString::transcode(doc->getNamespaceURI()) << endl;
+		cout << doc->getNamespaceURI() << endl;
 		DOMElement* root = doc->getDocumentElement();
 		cout << XMLString::transcode(root->getNodeName()) << endl;
 		cout << root->getNodeType() << endl;
